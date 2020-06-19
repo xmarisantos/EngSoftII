@@ -28,7 +28,7 @@
 
         <ul class="navbar-nav px-3">
           <li class="nav-item text-nowrap">
-            <a class="nav-link" href="<?= BASE_URL; ?>">Sign out</a>
+            <a class="nav-link" href="<?= BASE_URL; ?>/login.php?acao=sair"> Sign out</a>
           </li>
         </ul>
       </nav>
@@ -46,9 +46,21 @@
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?= BASE_URL; ?>/veterinario/veterinario.php">
+                      <a class="nav-link" href="<?= BASE_URL; ?>/servico/servico.php">
                         <span data-feather="file"></span>
+                        Serviços
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL; ?>/veterinario/veterinario.php">
+                        <span data-feather="users"></span>
                         Veterinários
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="<?= BASE_URL; ?>/funcionario/funcionario.php">
+                        <span data-feather="users"></span>
+                        Funcionários
                       </a>
                     </li>
                     <li class="nav-item">
@@ -67,28 +79,26 @@
                   </ul>
 
                   <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                    <span>Faturamento</span>
+                    <span>Relatórios</span>
                     <a class="d-flex align-items-center text-muted" href="#">
                       <span data-feather="plus-circle"></span>
                     </a>
                   </h6>
                   <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="<?= BASE_URL; ?>/pdf1.php">
                         <span data-feather="file-text"></span>
-                        Anual
+                        Veterinários
                       </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#">
+                      <a class="nav-link" href="<?= BASE_URL; ?>/pdf2.php">
                         <span data-feather="file-text"></span>
-                        Mensal
+                        Funcionários
                       </a>
                     </li>
                   </ul>
                   </div>
                   </nav>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-
-
-    <main role="main">
+                  <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <main role="main">
