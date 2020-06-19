@@ -1,4 +1,11 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['logado'])){
+        header('Location: ../login.php');
+    }
+?>
+<?php
 
     require_once '../config/conexao.php';
 
@@ -10,9 +17,9 @@
     * Ação de listar
     */
     if($acao=="listar"){
-       $sql   = "SELECT p.id, p.nome, p.idade, d.nome as paciente_dono
-                    FROM paciente_pet p
-                    INNER JOIN paciente_dono d ON d.id=p.id_paciente_dono";
+       $sql   = "SELECT p.id, p.nome, p.raca, p.idade, d.nome as paciente_dono
+                FROM paciente_pet p
+                INNER JOIN paciente_dono d ON d.id=p.id_paciente_dono";
        $query = $con->query($sql);
        $registros = $query->fetchAll();
 
@@ -25,9 +32,8 @@
     * Ação Novo
     **/
     else if($acao == "novo"){
-      $lista_paciente_pet = getPacientesDonos();
 
-      // print_r($lista_genero); exit;
+      $lista_paciente_dono = getDonos();
       require_once '../template/cabecalho.php';
       require_once 'form_paciente_pet.php';
       require_once '../template/rodape.php';
@@ -38,7 +44,6 @@
     else if($acao == "gravar"){
         $registro = $_POST;
 
-        // var_dump($registro);
 
         $sql = "INSERT INTO paciente_pet(nome, raca, idade, id_paciente_dono)
                   VALUES(:nome, :raca, :idade, :id_paciente_dono)";
@@ -79,8 +84,7 @@
         $query->execute();
         $registro = $query->fetch();
 
-        // var_dump($registro); exit;
-        $lista_paciente_pet = getPacientesDonos();
+        $lista_paciente_dono = getDonos();
         require_once '../template/cabecalho.php';
         require_once 'form_paciente_pet.php';
         require_once '../template/rodape.php';
@@ -89,11 +93,9 @@
     * Ação Atualizar
     **/
     else if($acao == "atualizar"){
-        $sql   = "UPDATE paciente_pet SET nome = :nome, raca = :raca,
-                    idade = :idade, id_paciente_dono = :id_paciente_dono
+        $sql   = "UPDATE paciente_pet SET nome = :nome, raca = :raca, idade = :idade, id_paciente_dono = :id_paciente_dono
                    WHERE id = :id";
         $query = $con->prepare($sql);
-
 
         $query->bindParam(':id', $_GET['id']);
         $query->bindParam(':nome', $_POST['nome']);
@@ -103,14 +105,13 @@
         $result = $query->execute();
 
         if($result){
-            header('Location: ./consulta.php');
+            header('Location: ./paciente_pet.php');
         }else{
             echo "Erro ao tentar atualizar os dados" . print_r($query->errorInfo());
         }
     }
 
-    //função que retorna a lista de pacientes cadastrados no banco
-    function getPacientesDonos(){
+    function getDonos(){
         $sql   = "SELECT * FROM paciente_dono";
         $query = $GLOBALS['con']->query($sql);
         $lista_paciente_dono = $query->fetchAll();

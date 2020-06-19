@@ -1,6 +1,6 @@
 <?php
     if(isset($registro)) $acao = "paciente_pet.php?acao=atualizar&id=".$registro['id'];
-    else $acao = "consulta.php?acao=gravar";
+    else $acao = "paciente_pet.php?acao=gravar";
  ?>
 <div class="container">
   <form class="" action="<?php echo $acao; ?>" method="post">
@@ -17,18 +17,18 @@
     </div>
     <div class="from-group">
       <label for="idade">Idade</label>
-      <input id="idade" class="form-control" type="number" name="Idade"
+      <input id="idade" class="form-control" type="number" name="idade"
         value="<?php if(isset($registro)) echo $registro['idade']; ?>" required>
     </div>
 
     <div class="from-group">
-      <label for="id_paciente_dono">Dono</label>
+      <label for="id_paciente_dono">Dono do Pet</label>
       <select class="form-control" name="id_paciente_dono" required>
         <option value="">Escolha um item na lista</option>
         <?php foreach ($lista_paciente_dono as $item): ?>
           <option value="<?php echo $item['id']; ?>"
             <?php if(isset($registro) && $registro['id_paciente_dono']==$item['id']) echo "selected";?>>
-            <?php echo $item['id_paciente_dono']; ?>
+            <?php echo $item['nome']; ?>
           </option>
         <?php endforeach; ?>
       </select>

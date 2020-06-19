@@ -20,9 +20,10 @@
             <td><?= $linha['nome']; ?></td>
             <td><?= $linha['raca']; ?></td>
             <td><?= $linha['idade']; ?></td>
-            <td><?= $linha['id_paciente_dono']; ?></td>
-                <a class="btn btn-warning btn-sm" href="consulta.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
-                <a class="btn btn-danger btn-sm" href="consulta.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
+            <td><?= $linha['paciente_dono']; ?></td>
+            <td>
+                <a class="btn btn-warning btn-sm" href="paciente_pet.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
+                <a class="btn btn-danger btn-sm" href="paciente_pet.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>
             </td>
           </tr>
         <?php endforeach; ?>
