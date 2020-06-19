@@ -1,4 +1,12 @@
+
+
 <?php
+
+session_start();
+
+if(!isset($_SESSION['logado'])){
+    header('Location: ../login.php');
+}
 
     require_once '../config/conexao.php';
 
@@ -34,9 +42,10 @@
     else if($acao == "gravar"){
         $registro = $_POST;
 
+        $registro['disponivel_plantao'] = (isset($registro['disponivel_plantao']))? 1 : 0;
 
-        $sql = "INSERT INTO veterinario(cpf, nome, endereco, numero, telefone, cargo)
-                  VALUES(:cpf, :nome, :endereco, :numero, :telefone, :cargo)";
+        $sql = "INSERT INTO veterinario(cpf, nome, endereco, numero, telefone, cargo, disponivel_plantao)
+                  VALUES(:cpf, :nome, :endereco, :numero, :telefone, :cargo, :disponivel_plantao)";
         $query = $con->prepare($sql);
         $result = $query->execute($registro);
         if($result){
@@ -62,9 +71,7 @@
             echo "Erro ao tentar remover o resgitro de id: " . $id;
         }
     }
-    /**
-    * Ação Excluir
-    **/
+
     else if($acao == "buscar"){
         $id    = $_GET['id'];
         $sql   = "SELECT * FROM veterinario WHERE id = :id";
@@ -84,11 +91,11 @@
     **/
     else if($acao == "atualizar"){
         $sql   = "UPDATE veterinario SET cpf = :cpf, nome = :nome, endereco = :endereco,
-                    numero = :numero, telefone = :telefone, cargo = :cargo
+                    numero = :numero, telefone = :telefone, cargo = :cargo, disponivel_plantao = :disponivel_plantao
                    WHERE id = :id";
         $query = $con->prepare($sql);
 
-
+        $_POST['disponivel_plantao'] = (isset($_POST['disponivel_plantao']))? 1 : 0;
 
         $query->bindParam(':id', $_GET['id']);
         $query->bindParam(':cpf', $_POST['cpf']);
@@ -97,6 +104,7 @@
         $query->bindParam(':numero', $_POST['numero']);
         $query->bindParam(':telefone', $_POST['telefone']);
         $query->bindParam(':cargo', $_POST['cargo']);
+        $query->bindParam(':disponivel_plantao', $_POST['disponivel_plantao']);
         $result = $query->execute();
 
         if($result){

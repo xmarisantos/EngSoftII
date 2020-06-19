@@ -16,6 +16,7 @@
           <th>Número</th>
           <th>Telefone</th>
           <th>Cargo</th>
+          <th>Plantão</th>
           <th>Ações</th>
       </thead>
       <tbody>
@@ -28,6 +29,8 @@
             <td><?= $linha['numero']; ?></td>
             <td><?= $linha['telefone']; ?></td>
             <td><?= $linha['cargo']; ?></td>
+            <td><?php if($linha['disponivel_plantao']==1) echo "Disponivel";
+                      else echo "Indisponivel"; ?></td>
             <td>
                 <a class="btn btn-warning btn-sm" href="veterinario.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
                 <a class="btn btn-danger btn-sm" href="veterinario.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>

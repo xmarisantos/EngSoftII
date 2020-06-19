@@ -40,6 +40,12 @@
       <input id="cargo" class="form-control" type="text" name="cargo"
         value="<?php if(isset($registro)) echo $registro['cargo']; ?>" required>
     </div>
+
+    <div class="form-check">
+      <input id="disponivel_plantao" class="form-check-input" type="checkbox" name="disponivel_plantao"
+        <?php if(isset($registro) && $registro['disponivel_plantao']==1) echo "checked"; ?>>
+      <label class="form-check-label" for="disponivel_plantao">  Disponível Plantão </label>
+    </div>
     <br>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>
