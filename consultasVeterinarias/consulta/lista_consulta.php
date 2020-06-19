@@ -9,9 +9,10 @@
           <th>#</th>
           <th>Data</th>
           <th>Hora</th>
-          <th>Veterinário</th>
           <th>Pet</th>
-          <th>Pagamento</th>
+          <th>Veterinário</th>
+          <th>Valor Consulta</th>
+          <th>Tipo Pagamento</th>
           <th>Ações</th>
       </thead>
       <tbody>
@@ -20,10 +21,10 @@
             <td><?= $linha['id']; ?></td>
             <td><?= $linha['data_consulta']; ?></td>
             <td><?= $linha['hora_consulta']; ?></td>
-            <td><?= $linha['id_paciente_pet']; ?></td>
-            <td><?= $linha['id_veterinario']; ?></td>
-            <td><?php if($linha['pagamento']==1) echo "Pagamento";
-                      else echo "Pagamento"; ?></td>
+            <td><?= $linha['pet']; ?></td>
+            <td><?= $linha['veterinario']; ?></td>
+            <td><?= $linha['valor_consulta']; ?></td>
+            <td><?= $linha['tipo_pagamento']; ?></td>
             <td>
                 <a class="btn btn-warning btn-sm" href="consulta.php?acao=buscar&id=<?php echo $linha['id']; ?>">Editar</a>
                 <a class="btn btn-danger btn-sm" href="consulta.php?acao=excluir&id=<?php echo $linha['id']; ?>">Excluir</a>

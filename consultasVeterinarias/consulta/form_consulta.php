@@ -17,9 +17,9 @@
     </div>
 
     <div class="from-group">
-      <label for="paciente_pet">Pet</label>
-      <input id="paciente_pet" class="form-control" type="text" name="paciente_pet"
-        value="<?php if(isset($registro)) echo $registro['paciente_pet']; ?>" required>
+      <label for="pet">Pet</label>
+      <input id="pet" class="form-control" type="text" name="pet"
+        value="<?php if(isset($registro)) echo $registro['pet']; ?>" required>
     </div>
 
     <div class="from-group">
@@ -35,16 +35,18 @@
       </select>
     </div>
 
+      <div class="from-group">
+        <label for="valor_consulta">Valor da consulta</label>
+        <input id="valor_consulta" class="form-control" type="text" name="valor_consulta"
+          value="<?php if(isset($registro)) echo $registro['valor_consulta']; ?>" required>
+      </div>
 
-    <div class="form-check">
+      <div class="from-group">
+        <label for="tipo_pagamento">Tipo Pagamento</label>
+        <input id="tipo_pagamento" class="form-control" type="text" name="tipo_pagamento"
+          value="<?php if(isset($registro)) echo $registro['tipo_pagamento']; ?>" required>
+      </div>
       <br>
-      <label for="pagamento">Pagamento</label>
-      <br>
-      <input id="pagamento" class="form-check-input" type="checkbox" name="pagamento"
-        <?php if(isset($registro) && $registro['pagamento']==1) echo "checked"; ?>>
-      <label class="form-check-label" for="pagamento">  Cartão </label>
-    </div>
-    <br>
-    <button class="btn btn-info" type="submit">Enviar</button>
-  </form>
-</div>
+      <button class="btn btn-info" type="submit">Enviar</button>
+      </form>
+      </div>
