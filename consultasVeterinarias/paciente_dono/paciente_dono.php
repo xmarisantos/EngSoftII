@@ -1,4 +1,12 @@
 <?php
+    session_start();
+
+    if(!isset($_SESSION['logado'])){
+        header('Location: ../login.php');
+    }
+?>
+
+<?php
 
     require_once '../config/conexao.php';
 
@@ -104,4 +112,12 @@
             echo "Erro ao tentar atualizar os dados" . print_r($query->errorInfo());
         }
     }
+
+    //função que retorna a lista de pacientes cadastrados no banco
+    // function getPacientesDonos(){
+      //  $sql   = "SELECT * FROM paciente_dono";
+        //$query = $GLOBALS['con']->query($sql);
+        //$lista_paciente_dono = $query->fetchAll();
+        //return $lista_paciente_dono;
+    //}
  ?>

@@ -34,6 +34,9 @@
       <input id="telefone" class="form-control" type="number" name="telefone"
         value="<?php if(isset($registro)) echo $registro['telefone']; ?>" required>
     </div>
+
+
+
     <br>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>
